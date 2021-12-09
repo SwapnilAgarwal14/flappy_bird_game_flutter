@@ -1,5 +1,6 @@
 import 'package:flappy_bird/credits_screen.dart';
 import 'package:flappy_bird/homepage.dart';
+import 'package:flappy_bird/level_2.dart';
 import 'package:flappy_bird/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomePage.ROUTE_NAME: (context) => HomePage(),
         CreditsScreen.ROUTE_NAME: (context) => CreditsScreen(),
+        SecondPage.ROUTE_NAME: (context) => SecondPage(),
       },
     );
   }

@@ -3,6 +3,8 @@ import 'package:flappy_bird/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'level_2.dart';
+
 class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -79,6 +81,18 @@ class StartScreen extends StatelessWidget {
                 onPress: () {
                   SystemNavigator.pop();
                 },
+              ),
+              MenuButton(
+                width: deviceWidth,
+                color: Colors.blue,
+                textColor: Colors.white,
+                text: 'Level 2',
+                onPress: () {
+                  Navigator.of(context).pushNamed(SecondPage.ROUTE_NAME);
+                },
+              ),
+              SizedBox(
+                height: 16,
               ),
               Spacer(),
             ],

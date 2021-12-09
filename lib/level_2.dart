@@ -1,18 +1,17 @@
 import 'dart:async';
-
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flappy_bird/barriers.dart';
 import 'package:flappy_bird/bird.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  static const String ROUTE_NAME = '/homeP';
+class SecondPage extends StatefulWidget {
+  static const String ROUTE_NAME = '/homePageScreen';
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _SecondPageState createState() => _SecondPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SecondPageState extends State<SecondPage> {
   static const String HIGH_SCORE_KEY = 'highScore';
   static double birdYAxis = 0;
   double time = 0;
@@ -26,8 +25,8 @@ class _HomePageState extends State<HomePage> {
   double lowerBarrierTwoHeight = 0.0;
 
   static double barrierXOne = -2.5;
-  double barrierXTwo = barrierXOne + 1.75; // 0.75
-   int level = 1;
+  double barrierXTwo = barrierXOne + 2.0; // 0.75
+
   int score = 0;
   int highScore = 0;
 
@@ -41,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       time = 0;
       height = 0;
       initialHeight = birdYAxis;
-      barrierXOne = -2.5;
+      barrierXOne = -3.5;
       barrierXTwo = barrierXOne + 1.75;
       score = 0;
     });
@@ -106,7 +105,7 @@ class _HomePageState extends State<HomePage> {
     });
     scoreTimer = Timer.periodic(
       Duration(seconds: 1),
-      (timer) {
+          (timer) {
         if (gameStarted) {
           setState(() {
             score++;
@@ -116,7 +115,7 @@ class _HomePageState extends State<HomePage> {
     );
     Timer.periodic(Duration(milliseconds: 50), (timer) async {
       time += 0.05;
-      height = -4.9 * time * time + 2.0 * time;
+      height = -4.9 * time * time + 2.8 * time;
       setState(() {
         birdYAxis = initialHeight - height;
         if (barrierXOne > 2) {
@@ -177,7 +176,7 @@ class _HomePageState extends State<HomePage> {
     lowerBarrierOneHeight = screenHeight / 5;
 
     upperbarrierTwoHeight = screenHeight / 5;
-    lowerBarrierTwoHeight = screenHeight / 2.5;
+    lowerBarrierTwoHeight = screenHeight / 2.7;
     return GestureDetector(
       onTap: () {
         if (gameStarted) {
@@ -197,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                 image: DecorationImage(
                   fit: BoxFit.fill,
                   image: AssetImage(
-                    'assets/images/game_wallpaper.jpg',
+                    'assets/images/bgg.jpg',
                   ),
                 ),
               ),
@@ -205,47 +204,47 @@ class _HomePageState extends State<HomePage> {
             gameStarted
                 ? Container()
                 : Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: 120,
-                        ),
-                        Text(
-                          'Tap to play',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w900,
-                            fontSize: 24.0,
-                            letterSpacing: 8,
-                          ),
-                        ),
-                      ],
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    height: 120,
+                  ),
+                  Text(
+                    'Tap to play',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 24.0,
+                      letterSpacing: 8,
                     ),
                   ),
+                ],
+              ),
+            ),
             AnimatedContainer(
-              alignment: Alignment(barrierXOne, -1.1),
+              alignment: Alignment(barrierXOne, -1.3),
               duration: Duration(seconds: 0),
               child: MyBarrier(
                 size: upperbarrierOneHeight,
               ),
             ),
             AnimatedContainer(
-              alignment: Alignment(barrierXOne, 1.1),
+              alignment: Alignment(barrierXOne, 1.2),
               duration: Duration(seconds: 0),
               child: MyBarrier(
                 size: lowerBarrierOneHeight,
               ),
             ),
             AnimatedContainer(
-              alignment: Alignment(barrierXTwo, -1.1),
+              alignment: Alignment(barrierXTwo, -1.3),
               duration: Duration(seconds: 0),
               child: MyBarrier(
                 size: upperbarrierTwoHeight,
               ),
             ),
             AnimatedContainer(
-              alignment: Alignment(barrierXTwo, 1.1),
+              alignment: Alignment(barrierXTwo, 1.2),
               duration: Duration(seconds: 0),
               child: MyBarrier(
                 size: lowerBarrierTwoHeight,
@@ -257,7 +256,7 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 width: screenWidth / 2.5,
                 decoration: BoxDecoration(
-                  color: Colors.blue[900],
+                  color: Colors.black,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     width: 2,
@@ -298,7 +297,7 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 width: screenWidth / 2.5,
                 decoration: BoxDecoration(
-                  color: Colors.blue[900],
+                  color: Colors.black,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     width: 2,
